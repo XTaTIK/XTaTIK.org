@@ -1,0 +1,65 @@
+package Fake;
+use utf8;
+
+1;
+
+__DATA__
+
+@@ index.html.ep
+% layout 'default';
+% title "Don't code. Sell.";
+% stash('metas', {
+%   keywords => 'eCommerce perl web framework extendable mojolicious',
+%   description =>  'Rapid-Deployment, Multi-Website eCommerce System',
+% });
+
+<h3>Powered By</h3>
+
+<ul id="powered-by">
+    <li><a class="s css3"
+        href="http://www.w3.org/Style/CSS/current-work.en.html"
+        >CSS3</a></li>
+    <li><a class="s html5" href="http://www.w3.org/TR/html5/">HTML5</a></li>
+    <li><a class="s jquery" href="http://jquery.com/">jQuery</a></li>
+    <li><a class="s mojolicious" href="http://mojolicio.us/">Mojolicious</a></li>
+    <li><a class="s perl" href="http://www.perl.org/">Perl 5</a></li>
+</ul>
+
+@@ layouts/default.html.ep
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title><%= title %> - XTaTIK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=.3">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <meta name="keywords"
+        content="<%= (stash('metas')||{})->{keywords} %>">
+    <meta name="description"
+        content="<%= (stash('metas')||{})->{description} %>">
+    %= asset "app.css", {}, media => "screen,tv,projection"
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+
+    <h1><img src="/content-pics/XTaTIK-logo-large.png" alt="XTaTIK"></h1>
+
+    <h2>Rapid-Deployment, Multi-Website eCommerce System</h2>
+
+    <section>
+        <%= content %>
+    </section>
+
+    <a href="https://github.com/XTaTIK/"
+        class="s github">Fork me on GitHub</a>
+</body>
+
+@@ sitemap.xml.ep
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://xtatik.org/</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+</urlset>
