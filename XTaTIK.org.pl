@@ -13,9 +13,7 @@ push @{ app->renderer->classes }, 'Fake';
 
 #### ROUTES
 
-get '/' => sub {
-    my $c = shift;
-} => 'index';
+get '/' => 'index';
 
 any '/sitemap.xml' => sub {
     my $c = shift;
