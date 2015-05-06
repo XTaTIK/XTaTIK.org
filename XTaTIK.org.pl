@@ -1,12 +1,22 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
+app->secrets([rand]);
 plugin 'AssetPack';
+plugin 'bootstrap3' => (
+  theme => {xtatik => "/CSS/_variables.scss"}
+);
 
-app->secrets([42]);
 app->config(hypnotoad => {listen => ['http://*:8081']});
-app->asset('app.css' => qw{/main.scss  sprites:///s/} );
 
+app->asset('app.js' => qw{
+    https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js
+    /JS/ie10-viewport-bug-workaround.js
+});
+app->asset('app.css' => qw{
+    sprites:///s/
+    /CSS/main.scss
+});
 
 require 'data.html';
 push @{ app->renderer->classes }, 'Fake';
